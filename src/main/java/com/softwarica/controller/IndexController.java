@@ -19,6 +19,6 @@ public class IndexController {
     @RequestMapping(value = "/index", method=RequestMethod.GET)
     public String displayHome()
     {
-        return "home";
+        return "adminHome";
     }
 }
