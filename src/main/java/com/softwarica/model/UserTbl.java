@@ -5,8 +5,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -34,6 +32,7 @@ public class UserTbl implements java.io.Serializable {
     private String userTaddress;
     private String userUsername;
     private String userPassword;
+    private byte active;
     private Set<SpecialprivilegeTbl> specialprivilegeTbls;
     private Set<Userworkshop> userworkshops;
     private Set<AcademicsachievementTbl> academicsachievementTbls;
@@ -45,7 +44,7 @@ public class UserTbl implements java.io.Serializable {
     public UserTbl() {
     }
 
-    public UserTbl(StudentbatchTbl studentbatchTbl, UsertypeTbl usertypeTbl, String userFname, String userLname, Date userDob, char userGender, String userPaddress, String userTaddress, String userUsername, String userPassword) {
+    public UserTbl(StudentbatchTbl studentbatchTbl, UsertypeTbl usertypeTbl, String userFname, String userLname, Date userDob, char userGender, String userPaddress, String userTaddress, String userUsername, String userPassword, byte active) {
         this.studentbatchTbl = studentbatchTbl;
         this.usertypeTbl = usertypeTbl;
         this.userFname = userFname;
@@ -56,9 +55,10 @@ public class UserTbl implements java.io.Serializable {
         this.userTaddress = userTaddress;
         this.userUsername = userUsername;
         this.userPassword = userPassword;
+        this.active = active;
     }
 
-    public UserTbl(StudentbatchTbl studentbatchTbl, UsertypeTbl usertypeTbl, String userFname, String userMname, String userLname, Date userDob, char userGender, String userPaddress, String userTaddress, String userUsername, String userPassword, Set<SpecialprivilegeTbl> specialprivilegeTbls, Set<Userworkshop> userworkshops, Set<AcademicsachievementTbl> academicsachievementTbls, Set<AttendanceTbl> attendanceTbls, TeacherfeedbackTbl teacherfeedbackTbl, Set<OthercontributionTbl> othercontributionTbls, Set<Userevent> userevents) {
+    public UserTbl(StudentbatchTbl studentbatchTbl, UsertypeTbl usertypeTbl, String userFname, String userMname, String userLname, Date userDob, char userGender, String userPaddress, String userTaddress, String userUsername, String userPassword, byte active, Set<SpecialprivilegeTbl> specialprivilegeTbls, Set<Userworkshop> userworkshops, Set<AcademicsachievementTbl> academicsachievementTbls, Set<AttendanceTbl> attendanceTbls, TeacherfeedbackTbl teacherfeedbackTbl, Set<OthercontributionTbl> othercontributionTbls, Set<Userevent> userevents) {
         this.studentbatchTbl = studentbatchTbl;
         this.usertypeTbl = usertypeTbl;
         this.userFname = userFname;
@@ -70,6 +70,7 @@ public class UserTbl implements java.io.Serializable {
         this.userTaddress = userTaddress;
         this.userUsername = userUsername;
         this.userPassword = userPassword;
+        this.active = active;
         this.specialprivilegeTbls = specialprivilegeTbls;
         this.userworkshops = userworkshops;
         this.academicsachievementTbls = academicsachievementTbls;
@@ -80,7 +81,6 @@ public class UserTbl implements java.io.Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "userId", unique = true, nullable = false)
     public Integer getUserId() {
         return this.userId;
@@ -91,7 +91,7 @@ public class UserTbl implements java.io.Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "batchId", nullable = false)
+    @JoinColumn(name = "batchId", nullable = true)
     public StudentbatchTbl getStudentbatchTbl() {
         return this.studentbatchTbl;
     }
@@ -190,6 +190,15 @@ public class UserTbl implements java.io.Serializable {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    @Column(name = "active", nullable = false)
+    public byte getActive() {
+        return this.active;
+    }
+
+    public void setActive(byte active) {
+        this.active = active;
     }
 
     @ManyToMany(fetch = FetchType.LAZY)

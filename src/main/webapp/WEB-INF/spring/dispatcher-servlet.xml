@@ -22,4 +22,5 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="com.softwarica"/>
     
+    <mvc:resources mapping="/resources/**" location="/resources/" /><!---to keep file in the static folder -->
 </beans>
