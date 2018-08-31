@@ -15,18 +15,18 @@ import javax.persistence.Table;
 public class UsertypeTbl implements java.io.Serializable {
 
     private Integer userTypeId;
-    private String userTypeName;
+    private String authority;
     private Set<UserTbl> userTbls;
 
     public UsertypeTbl() {
     }
 
-    public UsertypeTbl(String userTypeName) {
-        this.userTypeName = userTypeName;
+    public UsertypeTbl(String authority) {
+        this.authority = authority;
     }
 
-    public UsertypeTbl(String userTypeName, Set<UserTbl> userTbls) {
-        this.userTypeName = userTypeName;
+    public UsertypeTbl(String authority, Set<UserTbl> userTbls) {
+        this.authority = authority;
         this.userTbls = userTbls;
     }
 
@@ -41,13 +41,13 @@ public class UsertypeTbl implements java.io.Serializable {
         this.userTypeId = userTypeId;
     }
 
-    @Column(name = "userTypeName", nullable = false)
-    public String getUserTypeName() {
-        return this.userTypeName;
+    @Column(name = "authority", nullable = false)
+    public String getAuthority() {
+        return this.authority;
     }
 
-    public void setUserTypeName(String userTypeName) {
-        this.userTypeName = userTypeName;
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usertypeTbl")
