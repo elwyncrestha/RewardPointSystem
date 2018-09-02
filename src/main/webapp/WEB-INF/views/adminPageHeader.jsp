@@ -25,6 +25,8 @@
     <link href="<c:url value="/resources/vendors/nprogress/nprogress.css"></c:url>" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="<c:url value="/resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"></c:url>" rel="stylesheet"/>
+    <!-- Animate.css -->
+    <link href="<c:url value="/resources/vendors/animate.css/animate.min.css"></c:url>" rel="stylesheet">   
 
     <!-- Custom Theme Style -->
     <link href="<c:url value="/resources/build/css/custom.min.css"></c:url>" rel="stylesheet">
