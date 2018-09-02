@@ -43,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("elvin").password(passwordEncoder().encode("elvin")).roles("ADMIN");
 
         // jdbc authentication
-        String usersByUsernameQuery = "select username, password, active from userlogin_tbl where username=?";
-        String authoritiesByUsernameQuery = "select ul.username, ur.authority from userlogin_tbl ul, userrole_tbl ur where ul.roleId = ur.roleId and ul.username = ?";
+        String usersByUsernameQuery = "select userUsername, userPassword, active from user_tbl where userUsername=?";
+        String authoritiesByUsernameQuery = "select u.username, ut.authority from user_tbl u, usertype_tbl ut where u.userTypeId=ut.userTypeId and u.username = ?";
         auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(usersByUsernameQuery).authoritiesByUsernameQuery(authoritiesByUsernameQuery);
     }
 
