@@ -23,9 +23,6 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private CustomAuthenticationProvider customAuthenticationProvider;
-
-    @Autowired
     DataSource dataSource;
 
     @Bean
@@ -44,8 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // in-memory authentication for super user
         auth.inMemoryAuthentication().withUser(SuperUser.getUName()).password(SuperUser.getUCode()).roles("ADMIN");
         auth.inMemoryAuthentication().withUser("elvin").password(passwordEncoder().encode("elvin")).roles("ADMIN");
-        // custom authentication for super user
-        auth.authenticationProvider(customAuthenticationProvider);
+
         // jdbc authentication
         String usersByUsernameQuery = "select username, password, active from userlogin_tbl where username=?";
         String authoritiesByUsernameQuery = "select ul.username, ur.authority from userlogin_tbl ul, userrole_tbl ur where ul.roleId = ur.roleId and ul.username = ?";
