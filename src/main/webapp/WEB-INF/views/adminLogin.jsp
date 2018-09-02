@@ -3,7 +3,7 @@
     Created on : Aug 31, 2018, 2:39:29 PM
     Author     : elwyn
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,11 +18,11 @@
                 <div class="login_wrapper">
                     <div class="animate form login_form">
                         <section class="login_content">
-                            <form action="${pageContext.request.contextPath}/login" method="POST">
+                            <form action="<c:url value = '/perform_login' />" method="POST">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <h1>Login Form</h1>
                             <div>
-                                <input type="text" class="form-control" placeholder="Username" name="username" required="" />
+                                <input type="text" class="form-control" placeholder="Username" name="username" required="" autofocus />
                             </div>
                             <div>
                                 <input type="password" class="form-control" placeholder="Password" name="password" required="" />
