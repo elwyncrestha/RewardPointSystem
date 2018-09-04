@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // jdbc authentication
         String usersByUsernameQuery = "select userUsername, userPassword, active from user_tbl where userUsername=?";
-        String authoritiesByUsernameQuery = "select u.username, ut.authority from user_tbl u, usertype_tbl ut where u.userTypeId=ut.userTypeId and u.username = ?";
+        String authoritiesByUsernameQuery = "select u.userUsername, ut.authority from user_tbl u, usertype_tbl ut where u.userTypeId=ut.userTypeId and u.userUsername = ?";
         auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(usersByUsernameQuery).authoritiesByUsernameQuery(authoritiesByUsernameQuery);
     }
 
