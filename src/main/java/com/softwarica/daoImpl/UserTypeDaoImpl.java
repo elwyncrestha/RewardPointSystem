@@ -23,25 +23,39 @@
  */
 package com.softwarica.daoImpl;
 
-import com.softwarica.dao.SuperDao;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import com.softwarica.dao.UserTypeDao;
+import com.softwarica.model.UsertypeTbl;
+import java.util.ArrayList;
 
 /**
  *
  * @author elwyn
  */
-@Repository
-public class SuperDaoImpl implements SuperDao {
-
-    @Autowired
-    SessionFactory sessionFactory;
+public class UserTypeDaoImpl implements UserTypeDao{
 
     @Override
-    public Session getCurrentSession() {
-        return sessionFactory.getCurrentSession();
+    public void add(UsertypeTbl usertypeTbl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public ArrayList<UsertypeTbl> selectAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UsertypeTbl selectById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(UsertypeTbl usertypeTbl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(UsertypeTbl usertypeTbl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
