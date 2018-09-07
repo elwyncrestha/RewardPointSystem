@@ -23,15 +23,23 @@
  */
 package com.softwarica.daoImpl;
 
+import com.softwarica.dao.SuperDao;
 import com.softwarica.dao.UserTypeDao;
 import com.softwarica.model.UsertypeTbl;
 import java.util.ArrayList;
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author elwyn
  */
 public class UserTypeDaoImpl implements UserTypeDao{
+    
+    @Autowired
+    SuperDao superDao;
+    
+    Session localSession = superDao.getCurrentSession();
 
     @Override
     public void add(UsertypeTbl usertypeTbl) {
