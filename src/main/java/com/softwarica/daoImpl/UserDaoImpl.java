@@ -21,27 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.controller;
+package com.softwarica.daoImpl;
 
-import com.softwarica.service.UserTypeService;
+import com.softwarica.dao.UserDao;
+import com.softwarica.model.UserTbl;
+import java.util.ArrayList;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
  * @author elwyn
  */
-@Controller
-public class AdminController {
+public class UserDaoImpl implements UserDao{
     
     @Autowired
-    UserTypeService userTypeService;
-    
-    @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome() {
-        userTypeService.getUserType("test");
-        return "adminHome";
+    SessionFactory sessionFactory;
+
+    @Override
+    public void insert(UserTbl userTbl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<UserTbl> selectAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UserTbl selectById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(UserTbl userTbl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(UserTbl userTbl) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -34,6 +34,7 @@
                                         </div>
                                     </form>
                                 </div>
+                                <p>Back to login. <a href="${pageContext.request.contextPath}/login">Click here.</a>
                             </div>
                         </div>
                     </div>

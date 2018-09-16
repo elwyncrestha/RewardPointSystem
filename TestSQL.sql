@@ -20,7 +20,7 @@ create table StudentBatch_tbl
 
 create table User_tbl
 (
-	userId int not null primary key auto_increment,
+	userId int not null primary key,
     userFName varchar(255) not null,
     userMName varchar(255),
     userLName varchar(255) not null,
@@ -31,7 +31,7 @@ create table User_tbl
     userUsername varchar(255) not null,
     userPassword varchar(255) not null,
     userTypeId int not null,
-    batchId int not null,
+    batchId int,
     constraint fk_User_tbl_userTypeId foreign key (userTypeId) references UserType_tbl(userTypeId) on delete cascade,
     constraint fk_User_tbl_batchId foreign key (batchId) references StudentBatch_tbl(batchId) on delete cascade
 );

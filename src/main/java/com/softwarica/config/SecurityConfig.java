@@ -1,3 +1,26 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2018 elwyn.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.softwarica.config;
 
 import com.softwarica.customservices.SuperUser;
@@ -23,9 +46,6 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private CustomAuthenticationProvider customAuthenticationProvider;
-
-    @Autowired
     DataSource dataSource;
 
     @Bean
@@ -44,11 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // in-memory authentication for super user
         auth.inMemoryAuthentication().withUser(SuperUser.getUName()).password(SuperUser.getUCode()).roles("ADMIN");
         auth.inMemoryAuthentication().withUser("elvin").password(passwordEncoder().encode("elvin")).roles("ADMIN");
-        // custom authentication for super user
-        auth.authenticationProvider(customAuthenticationProvider);
+
         // jdbc authentication
-        String usersByUsernameQuery = "select username, password, active from userlogin_tbl where username=?";
-        String authoritiesByUsernameQuery = "select ul.username, ur.authority from userlogin_tbl ul, userrole_tbl ur where ul.roleId = ur.roleId and ul.username = ?";
+        String usersByUsernameQuery = "select userUsername, userPassword, active from user_tbl where userUsername=?";
+        String authoritiesByUsernameQuery = "select u.userUsername, ut.authority from user_tbl u, usertype_tbl ut where u.userTypeId=ut.userTypeId and u.userUsername = ?";
         auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(usersByUsernameQuery).authoritiesByUsernameQuery(authoritiesByUsernameQuery);
     }
 

@@ -53,19 +53,44 @@
 
                 <div id="register" class="animate form registration_form">
                     <section class="login_content">
-                        <form>
+                        <form action="${pageContext.request.contextPath}/register" method="POST">
                             <h1>Create Account</h1>
-                            <div>
-                                <input type="text" class="form-control" placeholder="Username" required="" />
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userId" placeholder="Id" required="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userFName" placeholder="First name" required="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userMName" placeholder="Middle name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userLName" placeholder="Last name" required="" />
+                            </div>
+                            <div class="form-group">
+                                <p class="help-block">Insert date of birth here</p>
+                                <input type="date" class="form-control" name="userDOB" required="" />
+                            </div>
+                            <div class="form-group">
+                                <p class="help-block">Choose gender</p>
+                                <input type="radio" class="radio-inline" value="M" name="userGender"> Male &nbsp;
+                                <input type="radio" class="radio-inline" value="F" name="userGender"> Female &nbsp;
+                                <input type="radio" class="radio-inline" value="O" name="userGender"> Others &nbsp;
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userPAddress" placeholder="Permanent address" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userTAddress" placeholder="Temporary address" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="userUsername" placeholder="Username" required="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="userPassword" placeholder="Password" required="" />
                             </div>
                             <div>
-                                <input type="email" class="form-control" placeholder="Email" required="" />
-                            </div>
-                            <div>
-                                <input type="password" class="form-control" placeholder="Password" required="" />
-                            </div>
-                            <div>
-                                <a class="btn btn-default submit" href="index.html">Submit</a>
+                                <input type="submit" class="btn btn-default submit" value="Submit">
                             </div>
 
                             <div class="clearfix"></div>

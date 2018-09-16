@@ -21,14 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.config;
+package com.softwarica.service;
 
-import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import com.softwarica.model.UsertypeTbl;
+import java.util.ArrayList;
 
 /**
  *
  * @author elwyn
  */
-public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer{
+public interface UserTypeService {
+
+    public void addUserType(UsertypeTbl usertypeTbl);
+
+    public ArrayList<UsertypeTbl> displayAllUserTypes();
+
+    public UsertypeTbl getUserType(int id);
+
+    public void updateUserType(UsertypeTbl usertypeTbl);
+
+    public void deleteUserType(UsertypeTbl usertypeTbl);
     
+    public boolean getUserType(String userTypeName);
 }

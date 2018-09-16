@@ -21,14 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.config;
+package com.softwarica.dao;
 
-import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import com.softwarica.model.UsertypeTbl;
+import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author elwyn
  */
-public class SpringSecurityInitializer extends AbstractSecurityWebApplicationInitializer{
+@Component("userTypeDao")
+public interface UserTypeDao {
+    
+    public void add(UsertypeTbl usertypeTbl);
+    
+    public ArrayList<UsertypeTbl> selectAll();
+    
+    public UsertypeTbl selectById(int id);
+    
+    public void update(UsertypeTbl usertypeTbl);
+    
+    public void delete(UsertypeTbl usertypeTbl);
+    
+    public boolean verifyUserType(String userTypeName);
     
 }
