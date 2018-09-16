@@ -21,27 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.daoImpl;
+package com.softwarica.service;
 
-import com.softwarica.dao.SuperDao;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import com.softwarica.model.UsertypeTbl;
+import java.util.ArrayList;
 
 /**
  *
  * @author elwyn
  */
-@Repository
-public class SuperDaoImpl implements SuperDao {
+public interface UserTypeService {
 
-    @Autowired
-    SessionFactory sessionFactory;
+    public void addUserType(UsertypeTbl usertypeTbl);
 
-    @Override
-    public Session getCurrentSession() {
-        return sessionFactory.getCurrentSession();
-    }
+    public ArrayList<UsertypeTbl> displayAllUserTypes();
 
+    public UsertypeTbl getUserType(int id);
+
+    public void updateUserType(UsertypeTbl usertypeTbl);
+
+    public void deleteUserType(UsertypeTbl usertypeTbl);
+    
+    public boolean getUserType(String userTypeName);
 }

@@ -23,6 +23,8 @@
  */
 package com.softwarica.controller;
 
+import com.softwarica.service.UserTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,9 +35,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class AdminController {
-
+    
+    @Autowired
+    UserTypeService userTypeService;
+    
     @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
     public String displayAdminHome() {
+        userTypeService.getUserType("test");
         return "adminHome";
     }
 }

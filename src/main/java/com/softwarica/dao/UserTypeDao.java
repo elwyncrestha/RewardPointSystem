@@ -25,11 +25,13 @@ package com.softwarica.dao;
 
 import com.softwarica.model.UsertypeTbl;
 import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author elwyn
  */
+@Component("userTypeDao")
 public interface UserTypeDao {
     
     public void add(UsertypeTbl usertypeTbl);
@@ -41,5 +43,7 @@ public interface UserTypeDao {
     public void update(UsertypeTbl usertypeTbl);
     
     public void delete(UsertypeTbl usertypeTbl);
+    
+    public boolean verifyUserType(String userTypeName);
     
 }

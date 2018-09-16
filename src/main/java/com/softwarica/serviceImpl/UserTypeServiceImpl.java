@@ -21,45 +21,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.daoImpl;
+package com.softwarica.serviceImpl;
 
-import com.softwarica.dao.UserDao;
-import com.softwarica.model.UserTbl;
+import com.softwarica.dao.UserTypeDao;
+import com.softwarica.model.UsertypeTbl;
+import com.softwarica.service.UserTypeService;
 import java.util.ArrayList;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author elwyn
  */
-public class UserDaoImpl implements UserDao{
+@Service
+@Transactional
+public class UserTypeServiceImpl implements UserTypeService{
     
-    @Autowired
-    SessionFactory sessionFactory;
+    @Autowired(required = false)
+    UserTypeDao userTypeDao;
 
     @Override
-    public void insert(UserTbl userTbl) {
+    public void addUserType(UsertypeTbl usertypeTbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<UserTbl> selectAll() {
+    public ArrayList<UsertypeTbl> displayAllUserTypes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public UserTbl selectById(int id) {
+    public UsertypeTbl getUserType(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(UserTbl userTbl) {
+    public void updateUserType(UsertypeTbl usertypeTbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(UserTbl userTbl) {
+    public void deleteUserType(UsertypeTbl usertypeTbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean getUserType(String userTypeName) {
+        return userTypeDao.verifyUserType(userTypeName);
+    }
+    
 }

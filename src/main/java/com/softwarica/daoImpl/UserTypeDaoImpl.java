@@ -23,23 +23,23 @@
  */
 package com.softwarica.daoImpl;
 
-import com.softwarica.dao.SuperDao;
 import com.softwarica.dao.UserTypeDao;
 import com.softwarica.model.UsertypeTbl;
 import java.util.ArrayList;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author elwyn
  */
-public class UserTypeDaoImpl implements UserTypeDao{
-    
+public class UserTypeDaoImpl implements UserTypeDao {
+
     @Autowired
-    SuperDao superDao;
-    
-    Session localSession = superDao.getCurrentSession();
+    SessionFactory sessionFactory;
 
     @Override
     public void add(UsertypeTbl usertypeTbl) {
@@ -65,5 +65,23 @@ public class UserTypeDaoImpl implements UserTypeDao{
     public void delete(UsertypeTbl usertypeTbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public boolean verifyUserType(String userTypeName) {
+        Session localSession = sessionFactory.getCurrentSession();
+        localSession.beginTransaction();
+        CriteriaBuilder builder = localSession.getCriteriaBuilder();
+        CriteriaQuery<UsertypeTbl> criteria = builder.createQuery(UsertypeTbl.class);
+
+        ArrayList<UsertypeTbl> arrayList = (ArrayList<UsertypeTbl>) localSession.createQuery(criteria).getResultList();
+
+        for (UsertypeTbl user : arrayList) {
+            System.out.println(user.getAuthority());
+        }
+        localSession.getTransaction().commit();
+        localSession.close();
+
+        return true;
+    }
+
 }
