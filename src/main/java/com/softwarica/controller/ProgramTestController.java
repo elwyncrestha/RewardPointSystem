@@ -21,28 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.dao;
+package com.softwarica.controller;
 
-import com.softwarica.model.UsertypeTbl;
-import java.util.ArrayList;
+import com.softwarica.service.UserTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
  * @author elwyn
  */
-
-public interface UserTypeDao {
+@Controller
+public class ProgramTestController {
     
-    public void add(UsertypeTbl usertypeTbl);
+    @Autowired
+    UserTypeService userTypeService;
     
-    public ArrayList<UsertypeTbl> selectAll();
-    
-    public UsertypeTbl selectById(int id);
-    
-    public void update(UsertypeTbl usertypeTbl);
-    
-    public void delete(UsertypeTbl usertypeTbl);
-    
-    public boolean verifyUserType(String userTypeName);
+    @RequestMapping(value = "/admin/test/usertype", method = RequestMethod.GET)
+    public String displayTestPage(Model model){
+        if(userTypeService.getUserType("test"))
+            model.addAttribute("TestAttribute","Test");
+        else
+            model.addAttribute("TestAttribute",null);
+        
+        return "testPage";
+    }
     
 }

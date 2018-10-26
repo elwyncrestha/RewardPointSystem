@@ -82,6 +82,7 @@
                                         </div>
                                         <div class="x_content">
                                             Add content to the page ...
+                                            <a href="${pageContext.request.contextPath}/admin/test/usertype">TEST</a>
                                         </div>
                                     </div>
                                 </div>

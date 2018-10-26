@@ -31,11 +31,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
+@Repository
 public class UserTypeDaoImpl implements UserTypeDao {
 
     @Autowired

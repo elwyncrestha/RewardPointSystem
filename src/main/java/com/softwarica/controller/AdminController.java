@@ -41,7 +41,7 @@ public class AdminController {
     
     @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
     public String displayAdminHome() {
-        userTypeService.getUserType("test");
         return "adminHome";
     }
+    
 }
