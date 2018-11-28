@@ -21,28 +21,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.dao;
+package com.softwarica.daoImpl;
 
-import com.softwarica.model.UsertypeTbl;
-import java.util.ArrayList;
+import com.softwarica.dao.WorkshopDao;
+import javax.persistence.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
+@Repository
+public class WorkshopDaoImpl implements WorkshopDao{
 
-public interface UserTypeDao {
+    @Autowired
+    SessionFactory sessionFactory;
     
-    public void add(UsertypeTbl usertypeTbl);
-    
-    public ArrayList<UsertypeTbl> selectAll();
-    
-    public UsertypeTbl selectById(int id);
-    
-    public void update(UsertypeTbl usertypeTbl);
-    
-    public void delete(UsertypeTbl usertypeTbl);
-    
-    public boolean verifyUserType(String userTypeName);
+    @Override
+    public long countWorkshops() {
+//        Session session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        int count = (int) session.createCriteria(WorkshopTbl.class).setProjection(Projections.rowCount()).uniqueResult();
+//        session.close();
+//        return count;
+
+        Session session = sessionFactory.openSession();
+        String query = "SELECT COUNT(w) FROM com.softwarica.model.WorkshopTbl w";
+        Query q = session.createQuery(query);
+        long count = (long)q.getSingleResult();
+        return count;
+    }
     
 }

@@ -23,26 +23,12 @@
  */
 package com.softwarica.dao;
 
-import com.softwarica.model.UsertypeTbl;
-import java.util.ArrayList;
-
 /**
  *
  * @author elwyn
  */
-
-public interface UserTypeDao {
+public interface WorkshopDao {
     
-    public void add(UsertypeTbl usertypeTbl);
-    
-    public ArrayList<UsertypeTbl> selectAll();
-    
-    public UsertypeTbl selectById(int id);
-    
-    public void update(UsertypeTbl usertypeTbl);
-    
-    public void delete(UsertypeTbl usertypeTbl);
-    
-    public boolean verifyUserType(String userTypeName);
+    public long countWorkshops();
     
 }

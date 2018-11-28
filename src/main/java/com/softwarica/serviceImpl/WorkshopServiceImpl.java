@@ -21,28 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.dao;
+package com.softwarica.serviceImpl;
 
-import com.softwarica.model.UsertypeTbl;
-import java.util.ArrayList;
+import com.softwarica.dao.WorkshopDao;
+import com.softwarica.service.WorkshopService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author elwyn
  */
+@Service
+@Transactional
+public class WorkshopServiceImpl implements WorkshopService{
 
-public interface UserTypeDao {
+    @Autowired
+    WorkshopDao workshopDao;
     
-    public void add(UsertypeTbl usertypeTbl);
-    
-    public ArrayList<UsertypeTbl> selectAll();
-    
-    public UsertypeTbl selectById(int id);
-    
-    public void update(UsertypeTbl usertypeTbl);
-    
-    public void delete(UsertypeTbl usertypeTbl);
-    
-    public boolean verifyUserType(String userTypeName);
+    @Override
+    public long countWorkshops() {
+        return workshopDao.countWorkshops();
+    }
     
 }

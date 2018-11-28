@@ -21,28 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.dao;
+package com.softwarica.daoImpl;
 
-import com.softwarica.model.UsertypeTbl;
-import java.util.ArrayList;
+import javax.persistence.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.softwarica.dao.EventDao;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
+@Repository
+public class EventDaoImpl implements EventDao{
 
-public interface UserTypeDao {
+    @Autowired
+    SessionFactory sessionFactory;
     
-    public void add(UsertypeTbl usertypeTbl);
-    
-    public ArrayList<UsertypeTbl> selectAll();
-    
-    public UsertypeTbl selectById(int id);
-    
-    public void update(UsertypeTbl usertypeTbl);
-    
-    public void delete(UsertypeTbl usertypeTbl);
-    
-    public boolean verifyUserType(String userTypeName);
+    @Override
+    public long countEvents() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sql = "SELECT COUNT(e) FROM com.softwarica.model.EventTbl e";
+        Query query = session.createQuery(sql);
+        return (long) query.getSingleResult();
+    }
     
 }

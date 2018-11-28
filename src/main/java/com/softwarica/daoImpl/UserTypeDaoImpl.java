@@ -31,11 +31,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
+@Repository
 public class UserTypeDaoImpl implements UserTypeDao {
 
     @Autowired
@@ -68,18 +70,18 @@ public class UserTypeDaoImpl implements UserTypeDao {
 
     @Override
     public boolean verifyUserType(String userTypeName) {
-        Session localSession = sessionFactory.getCurrentSession();
-        localSession.beginTransaction();
-        CriteriaBuilder builder = localSession.getCriteriaBuilder();
-        CriteriaQuery<UsertypeTbl> criteria = builder.createQuery(UsertypeTbl.class);
-
-        ArrayList<UsertypeTbl> arrayList = (ArrayList<UsertypeTbl>) localSession.createQuery(criteria).getResultList();
-
-        for (UsertypeTbl user : arrayList) {
-            System.out.println(user.getAuthority());
-        }
-        localSession.getTransaction().commit();
-        localSession.close();
+//        Session session = sessionFactory.getCurrentSession();
+//         
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<UsertypeTbl> criteria = builder.createQuery(UsertypeTbl.class);
+//        
+//        ArrayList<UsertypeTbl> arrayList = (ArrayList<UsertypeTbl>) session.createQuery(criteria).getResultList();
+//
+//        for (UsertypeTbl user : arrayList) {
+//            System.out.println(user.getAuthority());
+//        }
+//        session.getTransaction().commit();
+//        session.close();
 
         return true;
     }

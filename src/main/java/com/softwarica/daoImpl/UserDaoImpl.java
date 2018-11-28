@@ -26,13 +26,21 @@ package com.softwarica.daoImpl;
 import com.softwarica.dao.UserDao;
 import com.softwarica.model.UserTbl;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
+@Repository
 public class UserDaoImpl implements UserDao{
     
     @Autowired
@@ -45,7 +53,14 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public ArrayList<UserTbl> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<UserTbl> cq = cb.createQuery(UserTbl.class);
+        Root<UserTbl> root = cq.from(UserTbl.class);
+        cq.select(root);
+        
+        List<UserTbl> results = session.createQuery(cq).getResultList();
+        return (ArrayList)results;
     }
 
     @Override
@@ -61,5 +76,36 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void delete(UserTbl userTbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public long countStudents()
+    {
+        Session session = sessionFactory.openSession();
+        String query = "SELECT COUNT(u) FROM com.softwarica.model.UserTbl u";
+        Query q = session.createQuery(query);
+        long count = (long)q.getSingleResult();
+        return count;
+    }
+
+    @Override
+    public long countStudents(String gender) {
+        char userGender;
+        switch(gender.toLowerCase())
+        {
+            case "male":
+                userGender = 'M';
+                break;
+            case "female":
+                userGender = 'F';
+                break;
+            default:
+                userGender = 'O';
+        }
+        Session session = sessionFactory.openSession();
+        String query = "SELECT COUNT(u) FROM com.softwarica.model.UserTbl u WHERE u.userGender='"+userGender+"'";
+        Query q = session.createQuery(query);
+        long count = (long)q.getSingleResult();
+        return count;
     }
 }

@@ -42,4 +42,8 @@ public interface UserDao {
     
     public void delete(UserTbl userTbl);
     
+    public long countStudents();
+    
+    public long countStudents(String gender);
+    
 }

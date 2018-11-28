@@ -23,9 +23,13 @@
  */
 package com.softwarica.controller;
 
+import com.softwarica.service.EventService;
+import com.softwarica.service.UserService;
 import com.softwarica.service.UserTypeService;
+import com.softwarica.service.WorkshopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,9 +43,23 @@ public class AdminController {
     @Autowired
     UserTypeService userTypeService;
     
+    @Autowired
+    UserService userService;
+    
+    @Autowired
+    WorkshopService workshopService;
+    
+    @Autowired
+    EventService eventService;
+    
     @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome() {
-        userTypeService.getUserType("test");
+    public String displayAdminHome(Model count) {
+        count.addAttribute("CountStudents",userService.countStudents());
+        count.addAttribute("CountWorkshops",workshopService.countWorkshops());
+        count.addAttribute("CountEvents",eventService.countEvents());
+        count.addAttribute("CountMales",userService.countStudents("male"));
+        count.addAttribute("CountFemales",userService.countStudents("female"));
         return "adminHome";
     }
+    
 }

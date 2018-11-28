@@ -39,7 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserTypeServiceImpl implements UserTypeService{
     
-    @Autowired(required = false)
+    @Autowired/*(required = false)*/
     UserTypeDao userTypeDao;
 
     @Override
