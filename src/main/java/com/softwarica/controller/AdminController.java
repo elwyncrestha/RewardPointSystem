@@ -25,6 +25,7 @@ package com.softwarica.controller;
 
 import com.softwarica.service.UserService;
 import com.softwarica.service.UserTypeService;
+import com.softwarica.service.WorkshopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,9 +45,13 @@ public class AdminController {
     @Autowired
     UserService userService;
     
+    @Autowired
+    WorkshopService workshopService;
+    
     @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
     public String displayAdminHome(Model countStudent) {
         countStudent.addAttribute("CountStudents",userService.countStudents());
+        countStudent.addAttribute("CountWorkshops",workshopService.countWorkshops());
         return "adminHome";
     }
     

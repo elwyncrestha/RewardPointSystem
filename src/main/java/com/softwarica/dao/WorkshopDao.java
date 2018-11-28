@@ -23,25 +23,12 @@
  */
 package com.softwarica.dao;
 
-import com.softwarica.model.UserTbl;
-import java.util.ArrayList;
-
 /**
  *
  * @author elwyn
  */
-public interface UserDao {
+public interface WorkshopDao {
     
-    public void insert(UserTbl userTbl);
-    
-    public ArrayList<UserTbl> selectAll();
-    
-    public UserTbl selectById(int id);
-    
-    public void update(UserTbl userTbl);
-    
-    public void delete(UserTbl userTbl);
-    
-    public long countStudents();
+    public long countWorkshops();
     
 }

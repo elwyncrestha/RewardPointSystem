@@ -23,10 +23,8 @@
  */
 package com.softwarica.daoImpl;
 
-import com.softwarica.dao.UserDao;
-import com.softwarica.model.UserTbl;
-import java.util.ArrayList;
-import java.util.List;
+import com.softwarica.dao.WorkshopDao;
+import com.softwarica.model.WorkshopTbl;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -42,50 +40,24 @@ import org.springframework.stereotype.Repository;
  * @author elwyn
  */
 @Repository
-public class UserDaoImpl implements UserDao{
-    
+public class WorkshopDaoImpl implements WorkshopDao{
+
     @Autowired
     SessionFactory sessionFactory;
-
-    @Override
-    public void insert(UserTbl userTbl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<UserTbl> selectAll() {
-        Session session = sessionFactory.openSession();
-        CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<UserTbl> cq = cb.createQuery(UserTbl.class);
-        Root<UserTbl> root = cq.from(UserTbl.class);
-        cq.select(root);
-        
-        List<UserTbl> results = session.createQuery(cq).getResultList();
-        return (ArrayList)results;
-    }
-
-    @Override
-    public UserTbl selectById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update(UserTbl userTbl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete(UserTbl userTbl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
-    public long countStudents()
-    {
+    public long countWorkshops() {
+//        Session session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        int count = (int) session.createCriteria(WorkshopTbl.class).setProjection(Projections.rowCount()).uniqueResult();
+//        session.close();
+//        return count;
+
         Session session = sessionFactory.openSession();
-        String query = "SELECT COUNT(u) FROM com.softwarica.model.UserTbl u";
+        String query = "SELECT COUNT(w) FROM com.softwarica.model.WorkshopTbl w";
         Query q = session.createQuery(query);
         long count = (long)q.getSingleResult();
         return count;
     }
+    
 }

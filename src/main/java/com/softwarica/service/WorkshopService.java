@@ -21,27 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.dao;
-
-import com.softwarica.model.UserTbl;
-import java.util.ArrayList;
+package com.softwarica.service;
 
 /**
  *
  * @author elwyn
  */
-public interface UserDao {
+public interface WorkshopService {
     
-    public void insert(UserTbl userTbl);
-    
-    public ArrayList<UserTbl> selectAll();
-    
-    public UserTbl selectById(int id);
-    
-    public void update(UserTbl userTbl);
-    
-    public void delete(UserTbl userTbl);
-    
-    public long countStudents();
+    public long countWorkshops();
     
 }

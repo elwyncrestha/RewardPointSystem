@@ -29,6 +29,6 @@ package com.softwarica.service;
  */
 public interface UserService {
     
-    public int countStudents();
+    public long countStudents();
     
 }

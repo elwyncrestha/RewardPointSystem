@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService{
     UserDao userDao;
     
     @Override
-    public int countStudents() {
+    public long countStudents() {
         return userDao.countStudents();
     }
     
