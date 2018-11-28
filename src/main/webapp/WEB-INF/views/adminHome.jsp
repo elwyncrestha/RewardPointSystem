@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                                 <span class="count_top"><i class="fa fa-calendar-check-o"></i> Total Events</span>
-                                <div class="count">2,315</div>
+                                <div class="count">${CountEvents}</div>
                                 <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
                             </div>
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">

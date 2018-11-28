@@ -21,43 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.controller;
+package com.softwarica.daoImpl;
 
-import com.softwarica.service.EventService;
-import com.softwarica.service.UserService;
-import com.softwarica.service.UserTypeService;
-import com.softwarica.service.WorkshopService;
+import javax.persistence.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import com.softwarica.dao.EventDao;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
-@Controller
-public class AdminController {
-    
+@Repository
+public class EventDaoImpl implements EventDao{
+
     @Autowired
-    UserTypeService userTypeService;
+    SessionFactory sessionFactory;
     
-    @Autowired
-    UserService userService;
-    
-    @Autowired
-    WorkshopService workshopService;
-    
-    @Autowired
-    EventService eventService;
-    
-    @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome(Model count) {
-        count.addAttribute("CountStudents",userService.countStudents());
-        count.addAttribute("CountWorkshops",workshopService.countWorkshops());
-        count.addAttribute("CountEvents",eventService.countEvents());
-        return "adminHome";
+    @Override
+    public long countEvents() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        String sql = "SELECT COUNT(e) FROM com.softwarica.model.EventTbl e";
+        Query query = session.createQuery(sql);
+        return (long) query.getSingleResult();
     }
     
 }

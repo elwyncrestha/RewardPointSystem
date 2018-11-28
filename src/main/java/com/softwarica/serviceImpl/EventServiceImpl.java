@@ -21,43 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.controller;
+package com.softwarica.serviceImpl;
 
+import com.softwarica.dao.EventDao;
 import com.softwarica.service.EventService;
-import com.softwarica.service.UserService;
-import com.softwarica.service.UserTypeService;
-import com.softwarica.service.WorkshopService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author elwyn
  */
-@Controller
-public class AdminController {
+@Service
+@Transactional
+public class EventServiceImpl implements EventService{
     
     @Autowired
-    UserTypeService userTypeService;
-    
-    @Autowired
-    UserService userService;
-    
-    @Autowired
-    WorkshopService workshopService;
-    
-    @Autowired
-    EventService eventService;
-    
-    @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome(Model count) {
-        count.addAttribute("CountStudents",userService.countStudents());
-        count.addAttribute("CountWorkshops",workshopService.countWorkshops());
-        count.addAttribute("CountEvents",eventService.countEvents());
-        return "adminHome";
+    EventDao eventDao;
+
+    @Override
+    public long countEvents() {
+        return eventDao.countEvents();
     }
+    
+    
     
 }
