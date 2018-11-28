@@ -21,33 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.controller;
-
-import com.softwarica.service.UserService;
-import com.softwarica.service.UserTypeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+package com.softwarica.service;
 
 /**
  *
  * @author elwyn
  */
-@Controller
-public class AdminController {
+public interface UserService {
     
-    @Autowired
-    UserTypeService userTypeService;
-    
-    @Autowired
-    UserService userService;
-    
-    @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome(Model countStudent) {
-        countStudent.addAttribute("CountStudents",userService.countStudents());
-        return "adminHome";
-    }
+    public int countStudents();
     
 }

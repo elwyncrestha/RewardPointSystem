@@ -26,13 +26,17 @@ package com.softwarica.daoImpl;
 import com.softwarica.dao.UserDao;
 import com.softwarica.model.UserTbl;
 import java.util.ArrayList;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author elwyn
  */
+@Repository
 public class UserDaoImpl implements UserDao{
     
     @Autowired
@@ -45,7 +49,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public ArrayList<UserTbl> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -61,5 +65,15 @@ public class UserDaoImpl implements UserDao{
     @Override
     public void delete(UserTbl userTbl) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public int countStudents()
+    {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        long count = (long) session.createCriteria(UserTbl.class).setProjection(Projections.rowCount()).uniqueResult();
+        session.close();
+        return (int)count;
     }
 }

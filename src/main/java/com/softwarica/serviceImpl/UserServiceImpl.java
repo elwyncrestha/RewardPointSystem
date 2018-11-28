@@ -21,33 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.softwarica.controller;
+package com.softwarica.serviceImpl;
 
+import com.softwarica.dao.UserDao;
 import com.softwarica.service.UserService;
-import com.softwarica.service.UserTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author elwyn
  */
-@Controller
-public class AdminController {
-    
+@Service
+@Transactional
+public class UserServiceImpl implements UserService{
+
     @Autowired
-    UserTypeService userTypeService;
+    UserDao userDao;
     
-    @Autowired
-    UserService userService;
-    
-    @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome(Model countStudent) {
-        countStudent.addAttribute("CountStudents",userService.countStudents());
-        return "adminHome";
+    @Override
+    public int countStudents() {
+        return userDao.countStudents();
     }
     
 }
