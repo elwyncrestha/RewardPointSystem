@@ -49,9 +49,9 @@ public class AdminController {
     WorkshopService workshopService;
     
     @RequestMapping(value = "/admin/display/home", method = RequestMethod.GET)
-    public String displayAdminHome(Model countStudent) {
-        countStudent.addAttribute("CountStudents",userService.countStudents());
-        countStudent.addAttribute("CountWorkshops",workshopService.countWorkshops());
+    public String displayAdminHome(Model count) {
+        count.addAttribute("CountStudents",userService.countStudents());
+        count.addAttribute("CountWorkshops",workshopService.countWorkshops());
         return "adminHome";
     }
     

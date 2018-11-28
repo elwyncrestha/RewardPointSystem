@@ -24,14 +24,9 @@
 package com.softwarica.daoImpl;
 
 import com.softwarica.dao.WorkshopDao;
-import com.softwarica.model.WorkshopTbl;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
