@@ -31,4 +31,6 @@ public interface UserService {
     
     public long countStudents();
     
+    public long countStudents(String gender);
+    
 }

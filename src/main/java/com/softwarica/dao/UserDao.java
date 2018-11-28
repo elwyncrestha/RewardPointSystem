@@ -44,4 +44,6 @@ public interface UserDao {
     
     public long countStudents();
     
+    public long countStudents(String gender);
+    
 }

@@ -27,17 +27,17 @@
                         <div class="row tile_count">
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                                 <span class="count_top"><i class="fa fa-users"></i> Total Students</span>
-                                <div class="count">${CountStudents}</div>
+                                <div class="count green">${CountStudents}</div>
                                 <span class="count_bottom"><i class="green">4% </i> From last Week</span>
                             </div>
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                                 <span class="count_top"><i class="fa fa-male"></i> Total Males</span>
-                                <div class="count green">2,500</div>
+                                <div class="count">${CountMales}</div>
                                 <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
                             </div>
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                                 <span class="count_top"><i class="fa fa-female"></i> Total Females</span>
-                                <div class="count">4,567</div>
+                                <div class="count">${CountFemales}</div>
                                 <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
                             </div>
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                                 <span class="count_top"><i class="fa fa-line-chart"></i> Total Student Login</span>
-                                <div class="count">7,325</div>
+                                <div class="count blue">7,325</div>
                                 <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
                             </div>
                         </div>

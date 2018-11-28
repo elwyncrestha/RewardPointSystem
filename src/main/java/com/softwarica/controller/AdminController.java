@@ -57,6 +57,8 @@ public class AdminController {
         count.addAttribute("CountStudents",userService.countStudents());
         count.addAttribute("CountWorkshops",workshopService.countWorkshops());
         count.addAttribute("CountEvents",eventService.countEvents());
+        count.addAttribute("CountMales",userService.countStudents("male"));
+        count.addAttribute("CountFemales",userService.countStudents("female"));
         return "adminHome";
     }
     

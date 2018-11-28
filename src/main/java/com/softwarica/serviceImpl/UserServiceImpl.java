@@ -44,5 +44,10 @@ public class UserServiceImpl implements UserService{
     public long countStudents() {
         return userDao.countStudents();
     }
+
+    @Override
+    public long countStudents(String gender) {
+        return userDao.countStudents(gender);
+    }
     
 }

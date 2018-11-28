@@ -87,4 +87,25 @@ public class UserDaoImpl implements UserDao{
         long count = (long)q.getSingleResult();
         return count;
     }
+
+    @Override
+    public long countStudents(String gender) {
+        char userGender;
+        switch(gender.toLowerCase())
+        {
+            case "male":
+                userGender = 'M';
+                break;
+            case "female":
+                userGender = 'F';
+                break;
+            default:
+                userGender = 'O';
+        }
+        Session session = sessionFactory.openSession();
+        String query = "SELECT COUNT(u) FROM com.softwarica.model.UserTbl u WHERE u.userGender='"+userGender+"'";
+        Query q = session.createQuery(query);
+        long count = (long)q.getSingleResult();
+        return count;
+    }
 }
