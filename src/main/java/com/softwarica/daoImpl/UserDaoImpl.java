@@ -25,7 +25,6 @@ package com.softwarica.daoImpl;
 
 import com.softwarica.dao.UserDao;
 import com.softwarica.model.UserTbl;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -52,7 +51,7 @@ public class UserDaoImpl implements UserDao{
     }
 
     @Override
-    public ArrayList<UserTbl> selectAll() {
+    public List<UserTbl> selectAll() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<UserTbl> cq = cb.createQuery(UserTbl.class);
@@ -60,7 +59,7 @@ public class UserDaoImpl implements UserDao{
         cq.select(root);
         
         List<UserTbl> results = session.createQuery(cq).getResultList();
-        return (ArrayList)results;
+        return results;
     }
 
     @Override

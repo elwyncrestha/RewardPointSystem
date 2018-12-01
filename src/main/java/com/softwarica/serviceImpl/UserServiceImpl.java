@@ -24,7 +24,9 @@
 package com.softwarica.serviceImpl;
 
 import com.softwarica.dao.UserDao;
+import com.softwarica.model.UserTbl;
 import com.softwarica.service.UserService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,6 +50,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public long countStudents(String gender) {
         return userDao.countStudents(gender);
+    }
+
+    @Override
+    public List<UserTbl> displayAllUsers() {
+        return userDao.selectAll();
     }
     
 }

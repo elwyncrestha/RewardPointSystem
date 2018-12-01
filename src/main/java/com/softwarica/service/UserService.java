@@ -23,6 +23,9 @@
  */
 package com.softwarica.service;
 
+import com.softwarica.model.UserTbl;
+import java.util.List;
+
 /**
  *
  * @author elwyn
@@ -32,5 +35,7 @@ public interface UserService {
     public long countStudents();
     
     public long countStudents(String gender);
+    
+    public List<UserTbl> displayAllUsers();
     
 }

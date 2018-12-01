@@ -24,7 +24,7 @@
 package com.softwarica.dao;
 
 import com.softwarica.model.UserTbl;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -34,7 +34,7 @@ public interface UserDao {
     
     public void insert(UserTbl userTbl);
     
-    public ArrayList<UserTbl> selectAll();
+    public List<UserTbl> selectAll();
     
     public UserTbl selectById(int id);
     
