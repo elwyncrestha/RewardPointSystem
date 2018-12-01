@@ -27,6 +27,14 @@
     <link href="<c:url value="/resources/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"></c:url>" rel="stylesheet"/>
     <!-- Animate.css -->
     <link href="<c:url value="/resources/vendors/animate.css/animate.min.css"></c:url>" rel="stylesheet">   
+    <!-- iCheck -->
+    <link href="<c:url value="/resources/vendors/iCheck/skins/flat/green.css"></c:url>" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="<c:url value="/resources/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css"></c:url>" rel="stylesheet">
+    <link href="<c:url value="/resources/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css"></c:url>" rel="stylesheet">
+    <link href="<c:url value="/resources/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css"></c:url>" rel="stylesheet">
+    <link href="<c:url value="/resources/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css"></c:url>" rel="stylesheet">
+    <link href="<c:url value="/resources/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css"></c:url>" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="<c:url value="/resources/build/css/custom.min.css"></c:url>" rel="stylesheet">
