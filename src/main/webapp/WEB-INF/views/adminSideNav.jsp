@@ -89,7 +89,7 @@
                         <ul class="nav child_menu">
                             <li><a>User Details<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li class="sub_menu"><a href="#">Display Users</a></li>
+                                    <li class="sub_menu"><a href="${cp}/admin/user/display">Display Users</a></li>
                                     <li><a href="#">Edit Users</a></li>
                                 </ul>
                             </li>

@@ -17,8 +17,8 @@
 <!-- shortcut icon -->
 <link rel="shortcut icon" href="">
 
-<!-- Bootstrap -->
-<link href="<c:url value="/resources/vendors/bootstrap/dist/css/bootstrap.min.css"></c:url>" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="<c:url value="/resources/vendors/bootstrap/dist/css/bootstrap.min.css"></c:url>" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<c:url value="/resources/vendors/font-awesome/css/font-awesome.min.css"></c:url>" rel="stylesheet">
     <!-- NProgress -->
